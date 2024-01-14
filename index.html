@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
+    <title>2048</title>
+    <base href="https://test.pamaud.com/2048/">
+
+    <meta name="description" content="The legendary 2048 game - now ad-free">
+    <meta name="author" content="Rasmus Fyhrqvist">
+    <meta name="theme-color" content="#EECCAA">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:image" content="icons/icon-512.png">
+
+    <link rel="stylesheet" href="./style.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="info">
+        <h1>2048</h1>
+        <div class="content">
+            <p class="text">
+                Current&nbsp;/&nbsp;High:&nbsp;
+                <span id="current">0</span>
+                &nbsp;/&nbsp;
+                <span id="high">0</span>
+            </p>
+
+            <div class="btn-group">
+                <button id="share-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#952">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z" />
+                    </svg>
+                </button>
+                <button id="install-btn" class="install-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#952">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                    </svg>
+                </button>
+                <button id="reset-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#952">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="game">
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <article id="game-over">
+            <h2>Game Over :'(</h2>
+            <p>Share results?</p>
+            <button id="share-btn2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#952">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path
+                        d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z" />
+                </svg>
+            </button>
+            <p class="install-btn" >Install app?</p>            
+            <button id="install-btn2" class="install-btn" >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#952">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                </svg>
+            </button>
+            <p>Try Again?</p>
+            <button id="reset-btn2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#952">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path
+                        d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z" />
+                </svg>
+            </button>
+        </article>
+    </div>
+
+
+    <script src="./script.js"></script>
+</body>
+
+</html>

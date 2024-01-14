@@ -1,0 +1,145 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    font-weight: 700;
+}
+
+:root{ font-size: clamp(10px, calc(10px + (min(100vw,100vh) - 320px) * (34 - 10)/(2500 - 320)), 34px);}
+
+body, html{
+    width: 100%;
+    height: 100%;
+    background: #fed;
+}
+
+body{
+    display: flex;
+    flex-flow: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;    
+    color: #952;
+    text-align: center;
+    transform: scale(1);
+}
+
+#game{
+    flex: 0 1 min(90vw,500px);
+    position: relative;
+    height: 100%;
+    aspect-ratio: 1;
+    background: #eca;
+    border-radius: 1rem;
+    display: grid;
+    grid:repeat(4,1fr)/repeat(4,1fr);
+    gap: 1rem;
+    padding: 1.5rem;
+    touch-action: none;
+}
+
+.tile{
+    background: #fed;
+    border-radius: .5em;
+}
+
+.block{
+    position: absolute;
+    border-radius: .5rem;
+    width: calc(25% - 1.5rem);
+    aspect-ratio: 1;
+    background-color: var(--b);
+    top: calc(1.5rem + (25% - .5rem)*var(--y));
+    left:calc(1.5rem + (25% - .5rem)*var(--x)); 
+    transform: scale(1);
+    transition: all 250ms ease-in-out;    
+}
+.block::before{
+    content: attr(data-n);
+    display: block;
+    color: var(--c);
+    font-weight: 700;
+    font-size: var(--f);
+    text-align: center;
+    line-height: 0;
+    margin-top: 50%;
+}
+.fade-in{animation: fade-in 500ms ease-in-out 0ms 1 normal both;}
+.pulse{ animation: pulse 250ms ease-in-out 250ms 1 normal both;}
+@keyframes fade-in {
+    0%  {opacity:0;transform: scale(0);}
+    50% {opacity: 1;transform: scale(1);}
+    75% {transform: scale(1.15);}
+    100%{transform: scale(1);}
+}
+@keyframes pulse {
+    0%  {transform: scale(1);}
+    50% {transform: scale(1.15);}
+    100%{transform: scale(1);}
+}
+
+
+
+h1{font-size: 5rem;}
+h2{font-size: 2rem;}
+p{font-size: 1.5rem;}
+
+h1,h2,p{
+    letter-spacing: .1rem;
+    line-height: 3rem;
+    margin-bottom: 1rem;
+}
+
+#info .content{
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1rem;
+    place-content: center;
+}
+
+button{
+    width: max(48px,3rem);
+    aspect-ratio: 1;
+    padding: 12px;
+    outline: none;
+    border: none;
+    background: #eca;
+    border-radius: 50%;
+    display: inline-flex;
+    margin: 0 .5rem;
+}
+button svg{width: 100%;}
+button:hover{filter: brightness(.9)}
+button:active{filter: brightness(.8)}
+
+.install-btn{display: none;}
+
+#current{color: #f52}
+#high{color: #9c2}
+
+#game-over{
+    position: absolute;
+    width: 100%;
+    aspect-ratio: 1;
+    padding: 20%;
+    border-radius: .5rem;
+    z-index: 2;
+
+    display: grid;
+    grid: auto-flow 1fr/1fr max(48px,3rem);
+
+    background: #eca9;
+    color: #fed;
+    backdrop-filter: blur(3px) brightness(50%);
+
+    opacity: 1;
+    transition: opacity 700ms ease-in-out;
+
+}
+#game-over :first-child{grid-area: 1/1/1/-1}
+#game-over:not(.show){display: none;}
+
+@media only screen and (min-width:1500px) {
+    #game{flex: 0 1 1200px}
+}
